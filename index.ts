@@ -1,14 +1,8 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+// Require the framework and instantiate it
+const fastify = require('fastify')({ logger: true });
+var io = require('socket.io')(fastify.server);
 
-app.get('/', function(req, res) {
-  // res.sendFile(__dirname + '/index.html');
-});
-
-http.listen(3001, function() {
-  console.log('listening on *:3001');
-});
+fastify.listen(3001);
 
 io.on('connection', function(socket) {
   console.log('a user connected');

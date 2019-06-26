@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "my first socket.io app",
   "dependencies": {
-    "express": "^4.17.1",
+    "@types/node": "^12.0.10",
+    "fastify": "^2.6.0",
     "socket.io": "^2.2.0"
   }
 }

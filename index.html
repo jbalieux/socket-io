@@ -50,10 +50,10 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function() {
-        var socket = io('localhost:3001');
+        var socket = io('localhost:3005');
         $('form').submit(function(e) {
           e.preventDefault(); // prevents page reloading
-          socket.emit('chat message', $('#m').val() + '4231');
+          socket.emit('chat message', $('#m').val() + '99');
           $('#m').val('');
           return false;
         });
