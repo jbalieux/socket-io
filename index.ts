@@ -36,8 +36,14 @@ io.on('connection', function(socket) {
 
 io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
+    if (socket.nickname === undefined) {
+      socket.disconnect();
+    }
     console.log('message: ' + msg);
   });
+});
+
+io.on('connection', function(socket) {
   socket.on('send-nickname', function(userToken) {
     const user = jwt_decode(userToken);
     socket.nickname = user.username;
@@ -48,6 +54,6 @@ io.on('connection', function(socket) {
 
 io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
-    io.emit('chat message', socket.nickname + ': ' + msg);
+    io.emit('chat message', { author: socket.nickname, message: msg });
   });
 });
