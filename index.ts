@@ -2,6 +2,7 @@
 const fastify = require('fastify')({ logger: true });
 const io = require('socket.io')(fastify.server);
 const mysql = require('mysql');
+import * as jwt_decode from 'jwt-decode';
 
 fastify.listen(3001, '::');
 
@@ -37,10 +38,8 @@ io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
     console.log('message: ' + msg);
   });
-  socket.on('send-nickname', function(user) {
-    if (!listUsers.indexOf(user.username)) {
-      socket.disconnect();
-    }
+  socket.on('send-nickname', function(userToken) {
+    const user = jwt_decode(userToken);
     socket.nickname = user.username;
     users.push(socket.nickname);
     console.log(users);
