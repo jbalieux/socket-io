@@ -11,6 +11,7 @@ const con = mysql.createConnection({
   database: "sf4"
 });
 
+
 let test = [];
 let users = [];
 const sql = "select username from user"
