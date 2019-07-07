@@ -2,7 +2,7 @@
 const fastify = require('fastify')({ logger: true });
 const io = require('socket.io')(fastify.server);
 const mysql = require('mysql');
-import * as jwt_decode from 'jwt-decode';
+const jwt_decode = require('jwt-decode');
 
 fastify.listen(3001, '::');
 
