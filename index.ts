@@ -38,7 +38,7 @@ io.on('connection', function(socket) {
     console.log('message: ' + msg);
   });
   socket.on('send-nickname', function(user) {
-    if (!listUsers.some(user.username)) {
+    if (!listUsers.indexOf(user.username)) {
       socket.disconnect();
     }
     socket.nickname = user.username;
