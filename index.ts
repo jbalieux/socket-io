@@ -3,7 +3,7 @@ const fastify = require('fastify')({ logger: true });
 const io = require('socket.io')(fastify.server);
 const mysql = require('mysql');
 const jwt_decode = require('jwt-decode');
-var http = require('@angular/http');
+var http = new XMLHttpRequest();
 
 fastify.listen(3001, '::');
 
@@ -58,6 +58,8 @@ io.on('connection', function(socket) {
     io.emit('chat message', { author: socket.nickname, message: msg });
 
     const body = { author: 'api/users/26', message: msg };
-    http.post('http://api.senapi.fr/api/chat_service_messages', body).subscribe(arg => console.log('Hello world'));
+    http.open('POST', 'http://api.senapi.fr/api/chat_service_messages');
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.send(JSON.stringify(body));
   });
 });
