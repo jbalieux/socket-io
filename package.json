@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "my first socket.io app",
   "dependencies": {
+    "@angular/http": "^7.2.15",
     "@types/node": "^12.0.10",
     "fastify": "^2.6.0",
     "jwt-decode": "^2.2.0",
