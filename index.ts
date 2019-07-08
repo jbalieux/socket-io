@@ -3,7 +3,7 @@ const fastify = require('fastify')({ logger: true });
 const io = require('socket.io')(fastify.server);
 const mysql = require('mysql');
 const jwt_decode = require('jwt-decode');
-var http = new XMLHttpRequest();
+var http = require('xmlhttprequest').XMLHttpRequest;
 
 fastify.listen(3001, '::');
 
