@@ -55,5 +55,10 @@ io.on('connection', function(socket) {
 io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
     io.emit('chat message', { author: socket.nickname, message: msg });
+
+    const body = { author: 'api/users/26', message: msg };
+    fastify.post('http://api.senapi.fr/api/chat_service_messages', body, async (request, reply) => {
+      console.log('Hello world');
+    });
   });
 });
