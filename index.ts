@@ -55,6 +55,7 @@ io.on('connection', function(socket) {
 
 io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
+    console.log(msg);
     io.emit('chat message', { author: socket.nickname, message: msg });
 
     const body = { author: 'api/users/27', message: msg };
