@@ -57,7 +57,8 @@ io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
     io.emit('chat message', { author: socket.nickname, message: msg });
 
-    const body = { author: 'api/users/27', message: msg };
+    const currentDate = JSON.stringify(new Date());
+    const body = { author: 'api/users/27', message: msg, createdAt: currentDate, updatedAt: currentDate };
     const http = new xhr();
     http.open('POST', 'http://api.senapi.fr/api/chat_service_messages');
     http.setRequestHeader('Content-Type', 'application/json');
