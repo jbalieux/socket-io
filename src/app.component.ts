@@ -6,8 +6,10 @@ export class AppComponent {
     const dbService = new DatabaseService();
     const socketService = new SocketService();
 
-    dbService.connect();
-    dbService.fetchUsers();
-    socketService.start();
+    async () => {
+      await dbService.connect();
+      await dbService.fetchUsers();
+      await socketService.start();
+    };
   }
 }
