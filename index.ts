@@ -75,6 +75,7 @@ io.on('connection', function(socket) {
 
 io.on('connection', function(socket) {
   socket.on('cube-data', function(cubeData) {
+    console.log(cubeData);
     socket.emit('cube-data', cubeData);
   });
 });
